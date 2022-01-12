@@ -103,6 +103,21 @@ nav a:focus::before{
     transform: scaleY(1);
     transform-origin: bottom;
 }
+@media screen and (max-width:700px)
+{
+    header{
+        display: block;
+        text-align: center;
+    }
+    nav{
+        width:100%;
+    }
+    .header_image{
+        position:relative;
+        left:50%;
+        transform: translateX(-50%);
+    }
+}
 header h1{
     color:var(--color-dark-accent);
     font-size: clamp(3rem, 10vw, 5rem);
@@ -114,7 +129,14 @@ header h1{
     z-index: 10;
     text-shadow: 1px 1px 4px black;
 }
-
+@media screen and (max-width:700px) {
+    header h1{
+    position: static;
+    
+    width: 100%;
+    text-align: center;
+    }
+}
 
 main{
     background-color: var(--color-dark-600);
@@ -127,6 +149,7 @@ section.home{
     justify-items: center;
     align-items: center;
 }
+
 .home-image{
     position:relative;
     top:-10vh;
@@ -136,6 +159,16 @@ section.home{
     max-height: 80vh;
     box-shadow: 1px 0px 5px white;
     border-radius: 4px;
+}
+@media screen and (max-width:700px){
+    section.home{
+        grid-template-columns: 1fr;
+    }
+    .home-image{
+        width:90%;
+        position:static;
+        max-height: 500px;
+    }
 }
 fieldset{
     display: inline-block;
@@ -167,12 +200,26 @@ section.work{
     justify-items: center;
     align-items: center;
 }
+@media screen and (max-width:800px){
+    section.work{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media screen and (max-width:520px){
+    section.work{
+        grid-template-columns: 1fr;
+    }
+}
+
 
 div.card{
-    background-image: url("cottage.jpeg");
-    background-size: cover;
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
     width:100%;
-    height:400px;
+    max-width: 100%;
+    min-height:300px;
+    aspect-ratio: 1.2;
     position :relative;
     overflow: hidden;
     border-radius: 7px;
@@ -181,8 +228,8 @@ div.card-content{
     --left-margin:10px;
     height: 100%;
     width:100%;
-    background-image:linear-gradient(rgb(0 0 0 / 0), rgb(0 0 0 / 0.6));
-    transform: translateY(40%);
+    background-image:linear-gradient(rgb(0 0 0 / 0),rgb(0 0 0 / 0.5), rgb(0 0 0 / 0.9));
+    transform: translateY(35%);
     transition: transform 500ms ease;
 }
 div.card-title{
@@ -250,17 +297,42 @@ div.card:focus-within div.card-body{
 
 footer{
     background-color: var(--color-dark-800);
-    padding:40px 40px 40px 40px;
+    padding:30px;
     display: flex;
     justify-content: right;
     align-items: center;
 }
+footer a{
+    border-radius: 50%;
+    border:1px solid white;
+    display: block;
+    padding:10px 20px;
+    margin:10px;
+}
 i{
     float:right;
-    padding-left:20px;
-    color: red;
+    font-size: 30px;
 }
-i:hover{
+@media screen and (max-width:500px) {
+    i{
+        font-size: 20px;
+    }    
+}
+
+footer a:hover{
     transform:scale(1.1);
+
+    animation: bounce 400ms cubic-bezier(.18,.88,.34,1);
+    animation-iteration-count: 2;
+    animation-direction: alternate;
+}
+@keyframes bounce {
+    0%{
+        transform: translateY(0);
+    }
+    100%{
+        transform: translateY(-30px);
+    }
+
 }
 
